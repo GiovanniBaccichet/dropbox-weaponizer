@@ -68,15 +68,15 @@ TBA.
 
 | Name   |      Description      | Included |
 |----------|-------------|:------:|
-| Aircrack-ng Suite |  TBA | 🟢 |
+| Aircrack-ng Suite |  TBA | 🔴 |
 | Bettercap |    TBA   |  🔴 |
 | fail2ban | TBA |    🔴 |
 | [Kismet](https://www.kismetwireless.net/) | TBA |    🔴 |
 | [log2ram](https://github.com/azlux/log2ram) | TBA |    🔴 |
 | macchanger | TBA |    🔴 |
 | Nmap | TBA |    🔴 |
-| Reaver | TBA |    🟢 |
-| TCPdump | TBA |    🟢 |
+| Reaver | TBA |    🔴 |
+| TCPdump | TBA |    🔴 |
 | Tmux | TBA |    🔴 |
 | ufw | TBA |    🔴 |
 | Wifite | TBA |    🔴 |

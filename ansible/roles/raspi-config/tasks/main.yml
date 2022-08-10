@@ -1,0 +1,97 @@
+---
+- name: Upgrade packages
+  apt:
+    update_cache: yes
+    upgrade: yes
+
+- name: Update raspi-config tool
+  become: true
+  apt: name=raspi-config update_cache=yes state=present cache_valid_time=3600
+
+# 1 System Options
+
+# WLAN -> not configured here
+
+# Audio
+
+- name: Set audio out
+  shell: "raspi-config nonint do_audio {{ AUDIO_OUT }}"
+
+# Password -> not configured here
+
+# Hostname
+- name: Get hostname
+  shell: "raspi-config nonint get_hostname"
+  register: pi_hostname
+  changed_when: False
+
+- name: Change hostname
+  shell: "raspi-config nonint do_hostname {{ HOSTNAME }}"
+  when: pi_hostname.stdout != HOSTNAME
+
+# Network at boot
+- name: Set boot wait network status
+  shell: "raspi-config nonint do_boot_wait {{ BOOTWAIT }}"
+
+# Splash Screen -> not relevant
+
+# Power LED
+- name: Turn off power LED
+  shell: "raspi-config nonint do_leds {{ PWR_LED }}"
+
+# 2 Display Options -> not relevant
+# 3 Interface Options -> not relevant
+# 4 Performance Options -> not relevant
+
+# 5 Localization Options
+
+# Locale
+- name: Change locale
+  shell: "raspi-config nonint do_change_locale {{ LOCALE }}"
+
+# Timezone
+- name: Change timezone
+  shell: "raspi-config nonint do_change_timezone {{ TIMEZONE }}"
+
+# Keyboard
+- name: Change keyboard layout
+  shell: "raspi-config nonint do_configure_keyboard {{ XKBLAYOUT }}"
+
+# WLAN Country
+- name: Get WiFi country
+  shell: "raspi-config nonint get_wifi_country"
+  register: wifi_country
+  changed_when: False
+  ignore_errors: True #to avoid error when WiFi is not present
+
+
+- name: Set WiFi country
+  shell: "raspi-config nonint do_wifi_country {{ WIFI_COUNTRY }}"
+
+# 6 Advanced Options
+
+# Expand filesystem
+- name: Check if FS is expandable
+  shell: "raspi-config nonint get_can_expand"
+  register: fs_filled
+  changed_when: False
+
+- name: Expand Filesystem
+  shell: "raspi-config nonint do_expand_rootfs"
+
+# Network interface names
+- name: Get network names status
+  shell: "raspi-config nonint get_net_names"
+  register: pi_netnames
+  changed_when: False
+
+- name: Disable network names
+  shell: "raspi-config nonint do_net_names 1"
+  when: pi_netnames.stdout != '1'
+
+# # REBOOT
+# - name: Reboot
+#   become: True
+#   shell: "sleep 1 && shutdown -r now +1"
+#   async: 1
+#   poll: 0

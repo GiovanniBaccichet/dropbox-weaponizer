@@ -1,0 +1,17 @@
+###################################
+#     raspi-config variables      #
+###################################
+
+# 1 System Options
+AUDIO_OUT: "0" #0 Auto, 1 Force 3.5mm, 2 Force hdmi
+HOSTNAME: "dropbox"
+BOOTWAIT: 1 # 1=disable, 0=enable
+PWR_LED: 1
+
+# 5 Localization Options
+LOCALE: "en_US.UTF-8"
+TIMEZONE: "Europe/Rome"
+XKBLAYOUT: "us" #default "gb"
+WIFI_COUNTRY: "IT"
+
+

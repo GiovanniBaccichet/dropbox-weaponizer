@@ -71,17 +71,18 @@ TBA.
 | Aircrack-ng Suite |  TBA | 🔴 |
 | Bettercap |    TBA   |  🔴 |
 | fail2ban | TBA |    🔴 |
+| git | TBA |    🟢 |
 | [Kismet](https://www.kismetwireless.net/) | TBA |    🔴 |
 | [log2ram](https://github.com/azlux/log2ram) | TBA |    🔴 |
 | macchanger | TBA |    🔴 |
 | Nmap | TBA |    🔴 |
 | Reaver | TBA |    🔴 |
 | TCPdump | TBA |    🔴 |
-| Tmux | TBA |    🔴 |
+| Tmux | TBA |    🟢 |
 | ufw | TBA |    🔴 |
 | Wifite | TBA |    🔴 |
 | Wireshark | TBA |    🔴 |
-| Zsh | TBA |    🔴 |
+| Zsh | TBA |    🟢 |
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

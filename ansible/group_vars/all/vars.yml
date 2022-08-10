@@ -14,4 +14,11 @@ TIMEZONE: "Europe/Rome"
 XKBLAYOUT: "us" #default "gb"
 WIFI_COUNTRY: "IT"
 
+###################################
+#     general tools variables     #
+###################################
 
+general_packages:
+  - git
+  - zsh
+  - tmux

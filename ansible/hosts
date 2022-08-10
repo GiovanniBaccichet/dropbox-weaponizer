@@ -1,0 +1,2 @@
+[raspberry]
+dropbox ansible_host=192.168.4.145 ansible_user=bacci ansible_connection=ssh ansible_ssh_private_key_file=~/Desktop/dropbox_priv

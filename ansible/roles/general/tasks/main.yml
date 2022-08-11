@@ -54,7 +54,9 @@
 
 # Log2ram
 
-- name: Adding lo2ram repositiory
+
+
+- name: Add lo2ram repositiory
   shell: echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list && wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
 
 - name: Install log2ram
@@ -62,3 +64,19 @@
     name: log2ram
     state: latest
     update_cache: yes
+
+- name: Limit system log memory
+  lineinfile:
+    dest: /etc/systemd/journald.conf
+    regexp: "^#SystemMaxUse"
+    line: "SystemMaxUse=20M"
+  register: journald_config
+
+- name: Restart journald
+  service:
+    name: systemd-journald
+    state: restarted
+  when: journald_config.changed
+
+- name: Enable log2ram service
+  shell: systemctl enable log2ram

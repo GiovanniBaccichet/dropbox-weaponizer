@@ -24,3 +24,23 @@ general_packages:
   - git
   - zsh
   - tmux
+
+###################################
+#     bluetooth-pan variables     #
+###################################
+
+bt-nap_requirements:
+  - dbus-python
+  - PyGObject
+  - bridge-utils
+
+bluetooth_packages:
+  - dnsmasq
+  - pulseaudio 
+  - pulseaudio-module-zeroconf 
+  - alsa-utils 
+  - avahi-daemon 
+  - pulseaudio-module-bluetooth 
+  - bluez
+
+bluetooth_name: dropbox

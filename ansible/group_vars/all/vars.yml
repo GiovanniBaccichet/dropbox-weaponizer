@@ -24,3 +24,28 @@ general_packages:
   - git
   - zsh
   - tmux
+  - neofetch
+
+###################################
+#     bluetooth-pan variables     #
+###################################
+
+btnap_requirements:
+  - dbus-python
+  - PyGObject
+  - bridge-utils
+
+bluetooth_packages:
+  - dnsmasq
+  - pulseaudio 
+  - pulseaudio-module-zeroconf 
+  - alsa-utils 
+  - avahi-daemon 
+  - pulseaudio-module-bluetooth 
+  - bluez
+  - python3-pip
+  - libglib2.0-dev
+  - libgirepository1.0-dev
+  - libcairo2-dev
+
+bluetooth_name: dropbox

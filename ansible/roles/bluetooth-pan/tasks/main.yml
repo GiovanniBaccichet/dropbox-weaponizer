@@ -1,0 +1,70 @@
+---
+# Install packages
+
+- name: Install bluetooth packages
+  package:
+    name: "{{ bluetooth_packages }}"
+    state: latest
+
+- name: Install bt-nap requirements
+  pip:
+    name: "{{ btnap_requirements }}"
+
+- name: Get bt-nap
+  git:
+    repo: https://github.com/bablokb/pi-btnap
+    dest: '/home/{{ username }}/'
+    update: yes
+  become: false
+
+- name: Install bt-nap server
+  shell: './home/{{ username }}/pi-btnap/tools/install-btnap server'
+
+- name: Disable SAP plugin (fixing bluetooth configuration)
+  lineinfile:
+    dest: /etc/systemd/system/bluetooth.target.wants/bluetooth.service
+    regexp: "^ExecStart=/usr/libexec/bluetooth/bluetoothd"
+    line: "ExecStart=/usr/libexec/bluetooth/bluetoothd --noplugin=sap"
+  register: bluetooth_sap
+
+- name: Set bluetooth name
+  lineinfile:
+    dest: /etc/bluetooth/main.conf
+    regexp: "^#Name = BlueZ"
+    line: "Name = {{ bluetooth_name }}"
+  register: bluetooth_name
+
+# Enable services
+
+- name: Enable service bluetooth
+  service:
+    name: bluetooth
+    enabled: yes
+
+- name: Enable service btnap
+  service:
+    name: btnap
+    enabled: yes
+
+- name: Enable service dnsmasq
+  service:
+    name: dnsmasq
+    enabled: yes
+
+# Reload services
+
+- name: Restart bluetooth service
+  service:
+    name: bluetooth
+    state: restarted
+  when: bluetooth_sap
+
+- name: Restart dnsmasq service
+  service:
+    name: dnsmasq
+    state: restarted
+
+- name: Restart btnap service
+  service:
+    name: btnap
+    state: restarted

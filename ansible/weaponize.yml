@@ -6,3 +6,4 @@
   roles:
   - raspi-config
   - general
+  - bluetooth-pan

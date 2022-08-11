@@ -70,7 +70,7 @@ TBA.
 |----------|-------------|:------:|
 | Aircrack-ng Suite |  TBA | 🔴 |
 | Bettercap |    TBA   |  🔴 |
-| fail2ban | TBA |    🔴 |
+| fail2ban | TBA |    🟢 |
 | git | TBA |    🟢 |
 | [Kismet](https://www.kismetwireless.net/) | TBA |    🔴 |
 | [log2ram](https://github.com/azlux/log2ram) | TBA |    🔴 |
@@ -126,7 +126,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap 🚸
 
-- [ ] `raspi-config` (locale, timezone, expand filesystem, etc.)
+- [X] `raspi-config` (locale, timezone, expand filesystem, etc.)
 - [ ] Security hardening (users, SSH w/ key-auth, fail2ban, firewall, etc.)
 - [ ] Install all tools mentioned (see previous section)
 - [ ] MAC randomization on all interfaces

@@ -76,6 +76,7 @@ TBA.
 | [log2ram](https://github.com/azlux/log2ram) | TBA |    🟢 |
 | macchanger | TBA |    🔴 |
 | Nmap | TBA |    🔴 |
+| [Probequest](https://github.com/SkypLabs/probequest) | TBA | 🔴 |
 | Reaver | TBA |    🔴 |
 | TCPdump | TBA |    🔴 |
 | Tmux | TBA |    🟢 |
@@ -130,7 +131,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Security hardening (users, SSH w/ key-auth, fail2ban, firewall, etc.)
 - [ ] Install all tools mentioned (see previous section)
 - [ ] MAC randomization on all interfaces
-- [ ] Bluetooth PAN w/ hotspot
+- [X] Bluetooth PAN w/ hotspot
 - [ ] Auto SSH to domain
 - [ ] Self-destruct mechanism
 

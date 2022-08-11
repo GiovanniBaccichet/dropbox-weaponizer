@@ -34,20 +34,41 @@
 
 # Tmux and related stuff
 
-- name: Get oh-my-tmux template
-  git:
-    repo: https://github.com/gpakosz/.tmux
-    dest: '/home/{{ username }}/.tmux'
-    update: yes
+- name: Set .tmux.conf template
+  template:
+    src: tmux.template
+    dest: '/home/{{ username }.tmux.conf'
   become: false
 
-- name: Create link to tmux config file
-  shell: ln -s -f '/home/{{ username }}/.tmux/.tmux.conf'
+- name: Set .tmux.conf.local template
+  template:
+    src: tmux-local.template
+    dest: '/home/{{ username }.tmux.conf.local'
   become: false
 
-- name: Copy tmux local config file
-  shell: cp '/home/{{ username }}/.tmux/.tmux.conf.local' .
-  become: false
+# Log2ram
 
-- name: Set tmux as default shell
-  shell: usermod --shell $(which tmux) '{{ username }}'
+- name: Add lo2ram repositiory
+  shell: echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list && wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+
+- name: Install log2ram
+  package:
+    name: log2ram
+    state: latest
+    update_cache: yes
+
+- name: Limit system log memory
+  lineinfile:
+    dest: /etc/systemd/journald.conf
+    regexp: "^#SystemMaxUse"
+    line: "SystemMaxUse=20M"
+  register: journald_config
+
+- name: Restart journald
+  service:
+    name: systemd-journald
+    state: restarted
+  when: journald_config.changed
+
+- name: Enable log2ram service
+  shell: systemctl enable log2ram

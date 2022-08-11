@@ -70,10 +70,10 @@ TBA.
 |----------|-------------|:------:|
 | Aircrack-ng Suite |  TBA | 🔴 |
 | Bettercap |    TBA   |  🔴 |
-| fail2ban | TBA |    🟢 |
+| fail2ban | TBA |    🔴 |
 | git | TBA |    🟢 |
 | [Kismet](https://www.kismetwireless.net/) | TBA |    🔴 |
-| [log2ram](https://github.com/azlux/log2ram) | TBA |    🔴 |
+| [log2ram](https://github.com/azlux/log2ram) | TBA |    🟢 |
 | macchanger | TBA |    🔴 |
 | Nmap | TBA |    🔴 |
 | Reaver | TBA |    🔴 |

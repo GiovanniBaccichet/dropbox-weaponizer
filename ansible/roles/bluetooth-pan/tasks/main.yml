@@ -8,7 +8,7 @@
 
 - name: Install bt-nap requirements
   pip:
-    name: "{{ bt-nap_requirements }}"
+    name: "{{ btnap_requirements }}"
 
 - name: Get bt-nap
   git:
@@ -23,15 +23,15 @@
 - name: Disable SAP plugin (fixing bluetooth configuration)
   lineinfile:
     dest: /etc/systemd/system/bluetooth.target.wants/bluetooth.service
-    regexp: "^ExecStart=/usr/lib/bluetooth/bluetoothd"
-    line: "ExecStart=/usr/lib/bluetooth/bluetoothd --noplugin=sap"
+    regexp: "^ExecStart=/usr/libexec/bluetooth/bluetoothd"
+    line: "ExecStart=/usr/libexec/bluetooth/bluetoothd --noplugin=sap"
   register: bluetooth_sap
 
 - name: Set bluetooth name
   lineinfile:
     dest: /etc/bluetooth/main.conf
-    regexp: "^#Name="
-    line: "Name={{ bluetooth_name }}"
+    regexp: "^#Name = BlueZ"
+    line: "Name = {{ bluetooth_name }}"
   register: bluetooth_name
 
 # Enable services

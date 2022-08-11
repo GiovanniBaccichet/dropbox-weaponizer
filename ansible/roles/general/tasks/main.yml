@@ -51,3 +51,14 @@
 
 - name: Set tmux as default shell
   shell: usermod --shell $(which tmux) '{{ username }}'
+
+# Log2ram
+
+- name: Adding lo2ram repositiory
+  shell: echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list && wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+
+- name: Install log2ram
+  package:
+    name: log2ram
+    state: latest
+    update_cache: yes

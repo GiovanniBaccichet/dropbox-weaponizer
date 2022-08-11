@@ -37,18 +37,21 @@
 - name: Set .tmux.conf template
   template:
     src: tmux.template
-    dest: '/home/{{ username }.tmux.conf'
+    dest: '/home/{{ username }}/.tmux.conf'
   become: false
 
 - name: Set .tmux.conf.local template
   template:
     src: tmux-local.template
-    dest: '/home/{{ username }.tmux.conf.local'
+    dest: '/home/{{ username }}/.tmux.conf.local'
   become: false
+
+- name: Set tmux as default shell
+  shell: 'chsh -s $(which tmux) {{ username }}'
 
 # Log2ram
 
-- name: Add lo2ram repositiory
+- name: Add log2ram repositiory
   shell: echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list && wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
 
 - name: Install log2ram

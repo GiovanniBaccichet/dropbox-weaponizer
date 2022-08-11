@@ -49,24 +49,24 @@
 - name: Change locale
   shell: "raspi-config nonint do_change_locale {{ LOCALE }}"
 
-# Timezone
-- name: Change timezone
-  shell: "raspi-config nonint do_change_timezone {{ TIMEZONE }}"
+# Timezone -> already done with Raspberry Pi Imager
+# - name: Change timezone
+#   shell: "raspi-config nonint do_change_timezone {{ TIMEZONE }}"
 
-# Keyboard
-- name: Change keyboard layout
-  shell: "raspi-config nonint do_configure_keyboard {{ XKBLAYOUT }}"
+# Keyboard -> already done with Raspberry Pi Imager
+# - name: Change keyboard layout
+#   shell: "raspi-config nonint do_configure_keyboard {{ XKBLAYOUT }}"
 
-# WLAN Country
-- name: Get WiFi country
-  shell: "raspi-config nonint get_wifi_country"
-  register: wifi_country
-  changed_when: False
-  ignore_errors: True #to avoid error when WiFi is not present
+# WLAN Country -> already done with Raspberry Pi Imager
+# - name: Get WiFi country
+#   shell: "raspi-config nonint get_wifi_country"
+#   register: wifi_country
+#   changed_when: False
+#   ignore_errors: True #to avoid error when WiFi is not present
 
 
-- name: Set WiFi country
-  shell: "raspi-config nonint do_wifi_country {{ WIFI_COUNTRY }}"
+# - name: Set WiFi country
+#   shell: "raspi-config nonint do_wifi_country {{ WIFI_COUNTRY }}"
 
 # 6 Advanced Options
 

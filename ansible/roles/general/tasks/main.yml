@@ -1,40 +1,53 @@
 ---
 # Install packages
 
-- name: Install zsh and git
+- name: Install general packages
   package:
     name: "{{ general_packages }}"
     state: latest
 
 # Zsh and related stuff
 
+- name: Get .oh-my-zsh folder
+  stat:
+    path: '/home/{{ username }}/.oh-my-zsh'
+  register: directory_data
+  become: false
+
 - name: Install oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
-- name: Set zsh as default shell
-  shell: chsh -s $(which zsh)
+  when: not directory_data.stat.exists
+  become: false
 
 - name: Get Powerlevel10k for Zsh
   git:
     repo: https://github.com/romkatv/powerlevel10k
-    dest: ~/.oh-my-zsh/custom}/themes/powerlevel10k
+    dest: '/home/{{ username }}/.oh-my-zsh/themes/powerlevel10k'
     update: yes
+  become: false
 
 - name: Set .zshrc template
   template:
     src: zshrc.template
     dest: ~/.zshrc
+  become: false
 
 # Tmux and related stuff
 
 - name: Get oh-my-tmux template
   git:
     repo: https://github.com/gpakosz/.tmux
-    dest: ~/.tmux
+    dest: '/home/{{ username }}/.tmux'
     update: yes
+  become: false
 
 - name: Create link to tmux config file
-  shell: ln -s -f ~/.tmux/.tmux.conf
+  shell: ln -s -f '/home/{{ username }}/.tmux/.tmux.conf'
+  become: false
 
 - name: Copy tmux local config file
-  shell: cp ~/.tmux/.tmux.conf.local .
+  shell: cp '/home/{{ username }}/.tmux/.tmux.conf.local' .
+  become: false
+
+- name: Set tmux as default shell
+  shell: usermod --shell $(which tmux) '{{ username }}'

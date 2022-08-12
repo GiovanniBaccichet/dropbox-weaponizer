@@ -66,24 +66,26 @@ TBA.
 
 ### Tools and Components
 
-| Name   |      Description      | Included |
-|----------|-------------|:------:|
-| Aircrack-ng Suite |  TBA | 🔴 |
-| Bettercap |    TBA   |  🔴 |
-| fail2ban | TBA |    🔴 |
-| git | TBA |    🟢 |
-| [Kismet](https://www.kismetwireless.net/) | TBA |    🔴 |
-| [log2ram](https://github.com/azlux/log2ram) | TBA |    🟢 |
-| macchanger | TBA |    🔴 |
-| Nmap | TBA |    🔴 |
-| [Probequest](https://github.com/SkypLabs/probequest) | TBA | 🔴 |
-| Reaver | TBA |    🔴 |
-| TCPdump | TBA |    🔴 |
-| Tmux | TBA |    🟢 |
-| ufw | TBA |    🔴 |
-| Wifite | TBA |    🔴 |
-| Wireshark | TBA |    🔴 |
-| Zsh | TBA |    🟢 |
+|  Category | Name   |      Description      | Included |
+|:-----------:|----------|-------------|:------:|
+| 📡 | Aircrack-ng Suite |  TBA | 🔴 |
+| 🕸 | Bettercap |    TBA   |  🔴 |
+| 🔒 | fail2ban | TBA |    🔴 |
+| 👨🏻‍💻 | git | TBA |    🟢 |
+| 📡 | [Kismet](https://www.kismetwireless.net/) | TBA |    🔴 |
+| 👨🏻‍💻 | [log2ram](https://github.com/azlux/log2ram) | TBA |    🟢 |
+| 🕸 | macchanger | TBA |    🔴 |
+| 🕸 | Nmap | TBA |    🔴 |
+| 📡 | [Probequest](https://github.com/SkypLabs/probequest) | TBA | 🔴 |
+| 📡 | Reaver | TBA |    🔴 |
+| 🕸 | TCPdump | TBA |    🔴 |
+| 👨🏻‍💻 | Tmux | TBA |    🟢 |
+| 🔒 | ufw | TBA |    🔴 |
+| 📡 | Wifite | TBA |    🔴 |
+| 🕸 | Wireshark | TBA |    🔴 |
+| 👨🏻‍💻 | Zsh | TBA |    🟢 |
+
+`🕸 Networking | 🔒 Security | 👨🏻‍💻 Utility | 📡 Wireless`
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -185,5 +187,6 @@ Project Link: [https://github.com/GiovanniBaccichet/dropbox-weaponizer](https://
 * [Oh My Zsh - a delightful & open source framework for Zsh](https://ohmyz.sh/)
 * [Fish-like autosuggestions for zsh](https://github.com/zsh-users/zsh-autosuggestions)
 * [🇫🇷 Oh my tmux!](https://github.com/gpakosz/.tmux)
+* [Bluetooth Network Access Point for Raspberry Pi](https://github.com/bablokb/pi-btnap)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

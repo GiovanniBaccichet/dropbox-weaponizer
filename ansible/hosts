@@ -1,2 +1,2 @@
 [raspberry]
-dropbox ansible_host=192.168.3.223 ansible_user='{{ username }}' ansible_connection=ssh ansible_ssh_private_key_file=~/Desktop/dropbox_priv
+dropbox ansible_host='{{ dropbox_ip }}' ansible_user='{{ username }}' ansible_connection=ssh ansible_ssh_private_key_file=~/Desktop/dropbox_priv

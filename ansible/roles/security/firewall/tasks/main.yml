@@ -1,0 +1,7 @@
+---
+# Install firewall
+
+- name: Install ufw
+  package:
+    name: ufw
+    state: latest

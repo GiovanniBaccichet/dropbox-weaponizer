@@ -1,0 +1,31 @@
+---
+# Install fail2ban
+
+- name: Install fail2ban
+  package:
+    name: fail2ban
+    state: latest
+
+# SSH
+
+- name: Disable SSH password-auth
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#PasswordAuthentication yes"
+    line: "PasswordAuthentication no"
+  register: sshd_config
+
+- name: Restart SSH daemon
+  service:
+    name: sshd
+    state: restarted
+  when: sshd_config.changed
+
+# Add asterisks when typing password
+
+- name: Add asterisks when typing password
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: "^Defaults env_reset"
+    line: Defaults env_reset,pwfeedback
+    validate: "/usr/sbin/visudo -cf %s"

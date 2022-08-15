@@ -1,0 +1,84 @@
+---
+# Install packages
+
+- name: Install general packages
+  package:
+    name: "{{ general_packages }}"
+    state: latest
+
+# Zsh and related stuff
+
+- name: Get .oh-my-zsh folder
+  stat:
+    path: '/home/{{ username }}/.oh-my-zsh'
+  register: directory_data
+  become: false
+
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  when: not directory_data.stat.exists
+  become: false
+
+- name: Get Powerlevel10k for Zsh
+  git:
+    repo: https://github.com/romkatv/powerlevel10k
+    dest: '/home/{{ username }}/.oh-my-zsh/themes/powerlevel10k'
+    update: yes
+  become: false
+
+- name: Get zsh-autosuggestions
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: '/home/{{ username }}/.oh-my-zsh/plugins/zsh-autosuggestions'
+    update: yes
+  become: false
+
+- name: Set .zshrc template
+  template:
+    src: zshrc.template
+    dest: ~/.zshrc
+  become: false
+
+# Tmux and related stuff
+
+- name: Set .tmux.conf template
+  template:
+    src: tmux.template
+    dest: '/home/{{ username }}/.tmux.conf'
+  become: false
+
+- name: Set .tmux.conf.local template
+  template:
+    src: tmux-local.template
+    dest: '/home/{{ username }}/.tmux.conf.local'
+  become: false
+
+- name: Set tmux as default shell
+  shell: 'chsh -s $(which tmux) {{ username }}'
+
+# Log2ram
+
+- name: Add log2ram repositiory
+  shell: echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list && wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+
+- name: Install log2ram
+  package:
+    name: log2ram
+    state: latest
+    update_cache: yes
+
+- name: Limit system log memory
+  lineinfile:
+    dest: /etc/systemd/journald.conf
+    regexp: "^#SystemMaxUse"
+    line: "SystemMaxUse=20M"
+  register: journald_config
+
+- name: Restart journald
+  service:
+    name: systemd-journald
+    state: restarted
+  when: journald_config.changed
+
+- name: Enable log2ram service
+  shell: systemctl enable log2ram

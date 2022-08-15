@@ -1,0 +1,9 @@
+---
+- name: Dropbox Weaponizer Playbook
+  hosts: all
+  become: yes
+
+  roles:
+  - raspi-config
+  - general
+  - bluetooth-pan

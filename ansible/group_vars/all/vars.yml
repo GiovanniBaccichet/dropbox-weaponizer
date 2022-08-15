@@ -1,0 +1,57 @@
+###################################
+#      deployment variables       #
+###################################
+
+username: bacci
+
+dropbox_ip: 192.168.3.223
+
+###################################
+#     raspi-config variables      #
+###################################
+
+# 1 System Options
+AUDIO_OUT: "0" #0 Auto, 1 Force 3.5mm, 2 Force hdmi
+HOSTNAME: "dropbox"
+BOOTWAIT: 1 # 1=disable, 0=enable
+PWR_LED: 1
+
+# 5 Localization Options
+LOCALE: "en_US.UTF-8"
+TIMEZONE: "Europe/Rome"
+XKBLAYOUT: "us" #default "gb"
+WIFI_COUNTRY: "IT"
+
+###################################
+#     general tools variables     #
+###################################
+
+general_packages:
+  - git
+  - zsh
+  - tmux
+  - neofetch
+
+###################################
+#     bluetooth-pan variables     #
+###################################
+
+btnap_requirements:
+  - dbus-python
+  - PyGObject
+  - bridge-utils
+
+bluetooth_packages:
+  - dnsmasq
+  - pulseaudio 
+  - pulseaudio-module-zeroconf 
+  - alsa-utils 
+  - avahi-daemon 
+  - pulseaudio-module-bluetooth 
+  - bluez
+  - python3-pip
+  - libglib2.0-dev
+  - libgirepository1.0-dev
+  - libcairo2-dev
+
+bluetooth_name: dropbox

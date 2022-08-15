@@ -46,7 +46,7 @@ Let's begin by defining what a dropbox is and in which context can become useful
 
 > A **Dropbox**, sometimes also called a **Jump Box**, is a small device that you can hide somewhere within the physical location that you are targeting. Getting the device into the location will sometimes take other skills, such as social engineering, or even a little breaking and entering, to get the device into the location. A Dropbox can also be a box sent by the Security Consultant firm to be installed on a network for pen testing from a remote location - *Halton, W., Weaver, B., Ansari, J. A., Kotipalli, S. R., & Imran, M. A. (2017). Penetration Testing: A Survival Guide (1st ed.). Packt Publishing*.
 
-TBA.
+For this purpose, one of the best fits with respect to the hardware to use, is the **Raspberry Pi Zero 2**.
 
 <p align="center">
   <img src="media/rpi-zero.png" alt="rpi-zero" height="140"/>
@@ -64,13 +64,26 @@ TBA.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- FEATURES -->
+## Features 💣
+
+Main features description (TBA).
+
+<p align="center">
+  <img src="media/tmux.png" alt="tmux" />
+</p>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Tools and Components
+
+A brief summary of the primary tools that this Ansible Playbook is going to install and configure (dependencies are omitted):
 
 |  Category | Name   |      Description      | Included |
 |:-----------:|----------|-------------|:------:|
 | 📡 | Aircrack-ng Suite |  TBA | 🔴 |
 | 🕸 | Bettercap |    TBA   |  🔴 |
-| 🔒 | fail2ban | TBA |    🔴 |
+| 🔒 | fail2ban | TBA |    🟢 |
 | 👨🏻‍💻 | git | TBA |    🟢 |
 | 📡 | [Kismet](https://www.kismetwireless.net/) | TBA |    🔴 |
 | 👨🏻‍💻 | [log2ram](https://github.com/azlux/log2ram) | TBA |    🟢 |
@@ -80,25 +93,13 @@ TBA.
 | 📡 | Reaver | TBA |    🔴 |
 | 🕸 | TCPdump | TBA |    🔴 |
 | 👨🏻‍💻 | Tmux | TBA |    🟢 |
-| 🔒 | ufw | TBA |    🔴 |
+| 🔒 | ufw | TBA |    🟢 |
 | 📡 | Wifite | TBA |    🔴 |
 | 🕸 | Wireshark | TBA |    🔴 |
 | 👨🏻‍💻 | Zsh | TBA |    🟢 |
 
 `🕸 Networking | 🔒 Security | 👨🏻‍💻 Utility | 📡 Wireless`
 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- FEATURES -->
-## Features 💣
-
-Main features description (TBA).
-
-<p align="center">
-  <img src="media/tmux.png" alt="tmux" />
-</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,7 +131,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ## Roadmap 🚸
 
 - [X] `raspi-config` (locale, timezone, expand filesystem, etc.)
-- [ ] Security hardening (users, SSH w/ key-auth, fail2ban, firewall, etc.)
+- [X] Security hardening (users, SSH w/ key-auth, fail2ban, firewall, etc.)
 - [ ] Install all tools mentioned (see previous section)
 - [ ] MAC randomization on all interfaces
 - [X] Bluetooth PAN w/ hotspot
